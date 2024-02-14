@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MarquePageController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+    table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-family: sans-serif;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    }
+
+
+    thead {
+    background-color: rgb(228 240 245);
+    font-size: 1.2rem;
+    }
+
+    th,
+    td {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+    }
+
+
+    tbody > tr:nth-of-type(even) {
+    background-color: rgb(237 238 242);
+    }
+
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>C:/Dev/2024/DevBack/Symfony/avengers_henaff-cyan/src/Controller/MarquePageController.php</code></li>
+        <li>Your template at <code>C:/Dev/2024/DevBack/Symfony/avengers_henaff-cyan/templates/marque_page/index.html.twig</code></li>
+    </ul>
+    <h2>Liste complète des marques-pages</h2>
+    <table>
+        <thead>
+            <tr>
+            <th scope="col">URL</th>
+            <th scope="col">Commentaire</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for page in marques_pages %}
+            <tr>
+                <td>{{page.url}}</td>
+                <td>{{page.commentaire}}</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}
