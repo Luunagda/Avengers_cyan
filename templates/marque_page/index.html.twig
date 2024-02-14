@@ -43,11 +43,12 @@
         <li>Your controller at <code>C:/Dev/2024/DevBack/Symfony/avengers_henaff-cyan/src/Controller/MarquePageController.php</code></li>
         <li>Your template at <code>C:/Dev/2024/DevBack/Symfony/avengers_henaff-cyan/templates/marque_page/index.html.twig</code></li>
     </ul>
-    <h2>Liste complète des marques-pages</h2>
+    <h2>Liste complète des marquespages</h2>
     <table>
         <thead>
             <tr>
             <th scope="col">URL</th>
+            <th scope="col">Date</th>
             <th scope="col">Commentaire</th>
             </tr>
         </thead>
@@ -55,6 +56,7 @@
         {% for page in marques_pages %}
             <tr>
                 <td>{{page.url}}</td>
+                <td>{{page.dateCreation|date("m/d/Y")}}</td>
                 <td>{{page.commentaire}}</td>
             </tr>
         {% endfor %}

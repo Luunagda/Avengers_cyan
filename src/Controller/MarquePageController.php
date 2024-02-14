@@ -20,4 +20,18 @@ class MarquePageController extends AbstractController
             'marques_pages' => $marques_pages,
         ]);
     }
+
+    #[Route("/marque/page/ajouter", name: "marque_page_ajouter")]
+    public function ajouterMarquePage(EntityManagerInterface $entityManager): Response
+    {
+        $marques_pages = new MarquePage();
+        $marques_pages->setUrl("https://www.symfony.com/");
+        $marques_pages->setDateCreation(new \DateTime());
+        $marques_pages->setCommentaire("C'est un framework PHP très puissant et très pratique");
+
+        $entityManager->persist($marques_pages);
+        $entityManager->flush();
+
+        return new Response("MarquePage sauvegardé avec l'id ". $marques_pages->getId());
+    }
 }
