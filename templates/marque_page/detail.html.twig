@@ -64,33 +64,33 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Dev/2024/DevBack/Symfony/avengers_henaff-cyan/src/Controller/MarquePageController.php</code></li>
-        <li>Your template at <code>C:/Dev/2024/DevBack/Symfony/avengers_henaff-cyan/templates/marque_page/index.html.twig</code></li>
-    </ul>
-    <h2>Liste complète des marquespages</h2>
+    <h2>Detail du Marque page avec l'id : {{marque_page.id}}</h2>
     <table>
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">URL</th>
-                <th scope="col">Date</th>
-                <th scope="col">Commentaire</th>
+                <th scope="col">Libellé</th>
+                <th scope="col">Valeur</th>
             </tr>
         </thead>
         <tbody>
-            {% for page in marques_pages %}
-                <tr>
-                    <td>{{page.id}}</td>
-                    <td><a href="{{ path('marque_page_detail', { 'id': page.id }) }}">{{page.url}}</a></td>
-                    <td>{{page.dateCreation|date("d/m/Y")}}</td>
-                    <td>{{page.commentaire}}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
+            <tr>
+                <td>ID</td>
+                <td>{{marque_page.id}}</td>
+            </tr>
+            <tr>
+                <td>URL</td>
+                <td>{{marque_page.url}}</td>
+            </tr>                 
+            <tr>
+                <td>Date de création</td>
+                <td>{{marque_page.dateCreation|date("d/m/Y")}}</td>
+            </tr>
+            <tr>
+                <td>Commentaire</td>
+                <td>{{marque_page.commentaire}}</td>
+            </tr>
+      </tbody>
     </table>
+    <a href="{{ path('marque_page_index') }}">⬅️Retour arrière</a>
 </div>
 {% endblock %}
