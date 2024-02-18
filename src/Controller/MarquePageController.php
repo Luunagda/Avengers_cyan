@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\MarquePage;
+use App\Entity\MotsCles;
 use Doctrine\ORM\EntityManagerInterface;
 
 #[Route("/marque/page", requirements: ["_locale" => "en|es|fr"], name: "marque_page_")]
@@ -16,6 +17,7 @@ class MarquePageController extends AbstractController
     {
         $marques_pages = $entityManager->getRepository(MarquePage::class)->findAll();
 
+
         return $this->render('marque_page/index.html.twig', [
             'controller_name' => 'MarquePageController',
             'marques_pages' => $marques_pages,
@@ -25,11 +27,17 @@ class MarquePageController extends AbstractController
     #[Route("/ajouter", name: "ajouter")]
     public function ajouterMarquePage(EntityManagerInterface $entityManager): Response
     {
+        $mots_cles = new MotsCles();
+        $mots_cles->setMotsCles("framework");
+
         $marques_pages = new MarquePage();
         $marques_pages->setUrl("https://www.symfony.com/");
         $marques_pages->setDateCreation(new \DateTime());
         $marques_pages->setCommentaire("C'est un framework PHP très puissant et très pratique");
+        $marques_pages->setMotsCles($mots_cles);
 
+
+        $entityManager->persist($mots_cles);
         $entityManager->persist($marques_pages);
         $entityManager->flush();
 

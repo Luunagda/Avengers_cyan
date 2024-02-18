@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MarquePageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +24,17 @@ class MarquePage
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $commentaire = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $mots_cles = null;
+
+    #[ORM\ManyToMany(targetEntity: MotsCles::class, mappedBy: 'lien')]
+    private Collection $motsCles;
+
+    public function __construct()
+    {
+        $this->motsCles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +73,37 @@ class MarquePage
     public function setCommentaire(?string $commentaire): static
     {
         $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    public function getMotsCles(): ?string
+    {
+        return $this->mots_cles;
+    }
+
+    public function setMotsCles(?string $mots_cles): static
+    {
+        $this->mots_cles = $mots_cles;
+
+        return $this;
+    }
+
+    public function addMotsCle(MotsCles $motsCle): static
+    {
+        if (!$this->motsCles->contains($motsCle)) {
+            $this->motsCles->add($motsCle);
+            $motsCle->addLien($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMotsCle(MotsCles $motsCle): static
+    {
+        if ($this->motsCles->removeElement($motsCle)) {
+            $motsCle->removeLien($this);
+        }
 
         return $this;
     }

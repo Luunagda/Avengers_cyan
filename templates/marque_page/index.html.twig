@@ -79,6 +79,7 @@
                 <th scope="col">URL</th>
                 <th scope="col">Date</th>
                 <th scope="col">Commentaire</th>
+                <th scope="col">Mots-clés</th>
             </tr>
         </thead>
         <tbody>
@@ -88,6 +89,7 @@
                     <td><a href="{{ path('marque_page_detail', { 'id': page.id }) }}">{{page.url}}</a></td>
                     <td>{{page.dateCreation|date("d/m/Y")}}</td>
                     <td>{{page.commentaire}}</td>
+                    <td>{{page.motsCles}}</td>
                 </tr>
             {% endfor %}
         </tbody>
