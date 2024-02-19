@@ -6,12 +6,38 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
         {% endblock %}
+        <link href="{{ asset('css/base.css')}}" rel="stylesheet"/>
 
         {% block javascripts %}
 {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% block header %}
+            <header>
+                <img src="{{ asset('media/logo.png') }}" alt="Moi !"/>
+                <h1>Symfony dans tout ses états !</h1>
+            </header>
+             <div class="container">
+                <nav>
+                    <ul>
+                        <li> <a href="{{ path('marque_page_index') }}">Marque Page</a></li>
+                        <li> <a href="{{ path('marque_page_index') }}">Marque Page</a></li>
+                        <li> <a href="{{ path('marque_page_index') }}">Marque Page</a></li>
+                        <li> <a href="{{ path('marque_page_index') }}">Marque Page</a></li>
+                        <li> <a href="{{ path('marque_page_index') }}">Marque Page</a></li>
+                    </ul>
+                </nav>
+            </div>
+            {% endblock %}
+            {% block content %}{% endblock %}
+            {% block footer %}
+            <footer>
+                <h4>Site créer par Cyan Henaff (moi haha)</h4>
+                <p>Début de création février 2024</p>
+            </footer>
+            {% endblock %}
+        {% endblock %}
     </body>
 </html>

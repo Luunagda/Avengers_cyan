@@ -1,0 +1,56 @@
+.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+table {
+border-collapse: collapse;
+border: 2px solid rgb(140 140 140);
+font-family: sans-serif;
+font-size: 1rem;
+width: 100%;
+text-align: center;
+}
+
+
+thead {
+background-color: rgb(228 240 245);
+font-size: 1.2rem;
+}
+
+th,
+td {
+border: 1px solid rgb(160 160 160);
+padding: 8px 10px;
+}
+
+tbody > tr:nth-of-type(even) {
+background-color: rgb(237 238 242);
+}
+
+a {
+outline: none;
+text-decoration: none;
+padding: 2px 1px 0;
+}
+
+a:link {
+color: #001878 ;
+}
+
+a:visited {
+color: #001878 ;
+}
+
+a:focus {
+border-bottom: 1px solid;
+background:   #21b2ff  ;
+}
+
+a:hover {
+border-bottom: 1px solid;
+background:   #21b2ff   ;
+}
+
+a:active {
+background: #001878;
+color:  #21b2ff ;
+}
