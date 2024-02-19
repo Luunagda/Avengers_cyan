@@ -60,6 +60,10 @@
     background: #001878;
     color:  #21b2ff ;
     }
+    .motcle{
+        display: flex;
+        justify-content: center;
+    }
 
 </style>
 
@@ -93,7 +97,7 @@
                 <td>Mots-clés</td>
                 <td>
                     {% for mc in marque_page.motsCles %}
-                        {{mc.motsCles}}
+                        <p class="motcle">{{mc.motsCles}}</p>
                     {% endfor %}
                 </td>
             </tr>
