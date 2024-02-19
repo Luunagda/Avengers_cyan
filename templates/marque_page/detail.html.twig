@@ -91,7 +91,11 @@
             </tr>
             <tr>
                 <td>Mots-clés</td>
-                <td>{{marque_page.motsCles}}</td>
+                <td>
+                    {% for mc in marque_page.motsCles %}
+                        {{mc.motsCles}}
+                    {% endfor %}
+                </td>
             </tr>
       </tbody>
     </table>

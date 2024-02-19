@@ -25,8 +25,6 @@ class MarquePage
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $commentaire = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $mots_cles = null;
 
     #[ORM\ManyToMany(targetEntity: MotsCles::class, mappedBy: 'lien')]
     private Collection $motsCles;
@@ -77,17 +75,7 @@ class MarquePage
         return $this;
     }
 
-    public function getMotsCles(): ?string
-    {
-        return $this->mots_cles;
-    }
-
-    public function setMotsCles(?string $mots_cles): static
-    {
-        $this->mots_cles = $mots_cles;
-
-        return $this;
-    }
+   
 
     public function addMotsCle(MotsCles $motsCle): static
     {
@@ -106,5 +94,13 @@ class MarquePage
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, MotsCles>
+     */
+    public function getMotsCles(): Collection
+    {
+        return $this->motsCles;
     }
 }

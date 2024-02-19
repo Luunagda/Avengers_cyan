@@ -30,14 +30,19 @@ class MarquePageController extends AbstractController
         $mots_cles = new MotsCles();
         $mots_cles->setMotsCles("framework");
 
+        $mots_cles2 = new MotsCles();
+        $mots_cles2->setMotsCles("php");
+        
         $marques_pages = new MarquePage();
         $marques_pages->setUrl("https://www.symfony.com/");
         $marques_pages->setDateCreation(new \DateTime());
         $marques_pages->setCommentaire("C'est un framework PHP très puissant et très pratique");
-        $marques_pages->setMotsCles($mots_cles);
+        $marques_pages->addMotsCle($mots_cles);
+        $marques_pages->addMotsCle($mots_cles2);
 
 
         $entityManager->persist($mots_cles);
+        $entityManager->persist($mots_cles2);
         $entityManager->persist($marques_pages);
         $entityManager->flush();
 

@@ -89,7 +89,12 @@
                     <td><a href="{{ path('marque_page_detail', { 'id': page.id }) }}">{{page.url}}</a></td>
                     <td>{{page.dateCreation|date("d/m/Y")}}</td>
                     <td>{{page.commentaire}}</td>
-                    <td>{{page.motsCles}}</td>
+                    <td>
+                        {% for mc in page.motsCles %}
+                            {{mc.motsCles}}
+                        {% endfor %}
+                    </td>
+
                 </tr>
             {% endfor %}
         </tbody>
