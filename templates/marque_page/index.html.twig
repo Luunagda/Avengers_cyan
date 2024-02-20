@@ -5,20 +5,10 @@
 <link href="{{asset("css/index.css")}}" rel="stylesheet"/>
 {% endblock %}
 {% block content %}
-<style>
-
-
-</style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Dev/2024/DevBack/Symfony/avengers_henaff-cyan/src/Controller/MarquePageController.php</code></li>
-        <li>Your template at <code>C:/Dev/2024/DevBack/Symfony/avengers_henaff-cyan/templates/marque_page/index.html.twig</code></li>
-    </ul>
-    <h2>Liste complète des marquespages</h2>
+    
+    <h2>Liste complète des marques-pages</h2>
     <table>
         <thead>
             <tr>
@@ -33,7 +23,7 @@
             {% for page in marques_pages %}
                 <tr>
                     <td>{{page.id}}</td>
-                    <td><a href="{{ path('marque_page_detail', { 'id': page.id }) }}">{{page.url}}</a></td>
+                    <td><a class="link" href="{{ path('marque_page_detail', { 'id': page.id }) }}">{{page.url}}</a></td>
                     <td>{{page.dateCreation|date("d/m/Y")}}</td>
                     <td>{{page.commentaire}}</td>
                     <td>

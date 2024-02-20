@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre{% endblock %}
+
+{% block content %}
+
+<div class="example-wrapper">
+    <h2>Detail du Livre avec l'id : {{livre.id}}</h2>
+    <a class="link" href="{{ path('livre_index') }}">⬅️Retour arrière</a>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Libellé</th>
+                <th scope="col">Valeur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>{{livre.id}}</td>
+            </tr>
+            <tr>
+                <td>Titre</td>
+                <td>{{livre.titre}}</td>
+            </tr>                 
+            <tr>
+                <td>Année de publication</td>
+                <td>{{livre.annee}}</td>
+            </tr>
+            <tr>
+                <td>Nombre de pages</td>
+                <td>{{livre.nbPages}}</td>
+            </tr>
+            <tr>
+                <td>Auteur</td>
+                <td>
+                    {{livre.auteur.prenom}} {{livre.auteur.nom}}
+                </td>
+            </tr>
+      </tbody>
+    </table>
+</div>
+{% endblock %}

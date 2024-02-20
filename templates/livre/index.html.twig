@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre{% endblock %}
+{% block stylesheets %}
+<link href="{{asset("css/index.css")}}" rel="stylesheet"/>
+{% endblock %}
+{% block content %}
+
+<div class="example-wrapper">
+    
+    <h2>Liste complète des Livres</h2>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Année</th>
+                <th scope="col">Nombre de pages</th>
+                <th scope="col">Auteur</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in livre %}
+                <tr>
+                    <td>{{book.id}}</td>
+                    <td><a class="link" href="{{ path('livre_detail', { 'id': book.id }) }}">{{book.titre}}</a></td>
+                    <td>{{book.annee}}</td>
+                    <td>{{book.nbPages}}</td>
+                    <td>
+                        {{book.auteur.prenom}} {{book.auteur.nom}}
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
