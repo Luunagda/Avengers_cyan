@@ -1,0 +1,6 @@
+body{
+    background-color: rgb(0, 172, 115);
+}
+nav ul li::after{
+    background-color: rgb(0, 172, 115);
+}

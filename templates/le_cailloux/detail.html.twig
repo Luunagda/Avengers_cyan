@@ -1,0 +1,36 @@
+{% extends 'le_cailloux/layout.html.twig' %}
+
+{% block content_detail %}
+    <h2>Detail du Marque page avec l'id : {{cailloux.id}}</h2>
+    <a class="link" href="{{ path('le_cailloux_index') }}">⬅️Retour arrière</a>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Libellé</th>
+                <th scope="col">Valeur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>{{cailloux.id}}</td>
+            </tr>
+            <tr>
+                <td>Nom</td>
+                <td>{{cailloux.nom}}</td>
+            </tr>                 
+            <tr>
+                <td>Image</td>
+                <td><img src="{{asset(cailloux.img)}}" alt="image de {{cailloux.nom}}"/></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>{{cailloux.description}}</td>
+            </tr>
+            <tr>
+                <td>Catégories</td>
+                <td>{{cailloux.categories.nom}}</td>
+            </tr>
+      </tbody>
+    </table>
+{% endblock %}

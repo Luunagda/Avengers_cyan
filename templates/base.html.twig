@@ -9,7 +9,7 @@
         <link href="{{ asset('css/base.css')}}" rel="stylesheet"/>
 
         {% block javascripts %}
-{% block importmap %}{{ importmap('app') }}{% endblock %}
+{#{ block importmap %}{{ importmap('app') }}{% endblock %}#}
         {% endblock %}
     </head>
     <body>
@@ -24,12 +24,14 @@
                     <ul>
                         <li> <a href="{{ path('marque_page_index') }}">Marque Page</a></li>
                         <li> <a href="{{ path('livre_index') }}">Livre</a></li>
-                        <li> <a href="{{ path('marque_page_index') }}">Marque Page</a></li>
+                        <li> <a href="{{ path('le_cailloux_index') }}">Le Cailloux</a></li>
                     </ul>
                 </nav>
             </div>
             {% endblock %}
+            <div class="example-wrapper">
             {% block content %}{% endblock %}
+            </div>
             {% block footer %}
             <footer>
                 <h4>Site créer par Cyan Henaff (moi haha)</h4>

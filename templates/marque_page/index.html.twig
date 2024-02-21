@@ -1,13 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'marque_page/layout.html.twig' %}
 
-{% block title %}Hello MarquePageController!{% endblock %}
-{% block stylesheets %}
-<link href="{{asset("css/index.css")}}" rel="stylesheet"/>
-{% endblock %}
-{% block content %}
-
-<div class="example-wrapper">
-    
+{% block content_detail %}    
     <h2>Liste complète des marques-pages</h2>
     <table>
         <thead>
@@ -36,5 +29,4 @@
             {% endfor %}
         </tbody>
     </table>
-</div>
 {% endblock %}

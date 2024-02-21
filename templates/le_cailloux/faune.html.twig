@@ -1,0 +1,33 @@
+{% extends 'le_cailloux/layout.html.twig' %}
+
+{% block title %}Le Cailloux - la faune{% endblock %}
+
+{% block content_detail %}
+
+<div class="example-wrapper">
+    
+    <h2>Liste complète de la Faune du Cailloux</h2>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Catégories</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for el in faune %}
+                <tr>
+                    <td>{{el.id}}</td>
+                    <td><a class="link" href="{{ path('le_cailloux_detail', { 'id': el.id }) }}">{{el.nom}}</a></td>
+                    <td><img src="{{asset(el.img)}}" alt="image de {{el.nom}}"/></td>
+                    <td>{{el.description}}</td>
+                    <td>{{el.categories.nom}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

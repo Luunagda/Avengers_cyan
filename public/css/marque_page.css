@@ -1,0 +1,6 @@
+body{
+    background-color: skyblue;
+}
+nav ul li::after{
+    background-color: skyblue;
+}

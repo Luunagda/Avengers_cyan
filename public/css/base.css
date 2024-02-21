@@ -1,3 +1,18 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/*****************Header*****************/
+
 header{
     display: flex;
     background-color: rgb(255, 255, 255);;
@@ -13,30 +28,20 @@ header h1{
     font-size: 2em;
     margin: 0;
 }
-nav{
-    background-color: rgb(0, 14, 76);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 1em;
-    gap: 2rem;
-    padding: 2% 5% 2% 5%;
-}
-footer{
-    display: flex;
-    background-color: black;
-}
-body{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
+
+
+
+   /*****************Navigation*****************/
+
+   nav a, nav a:link, nav a:visited, nav a:focus, nav a:hover, nav a:active{
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+    color : #000;
+    }
+    nav a:hover{
+        color: #001878;
+    }
   .container {
     display: flex;
     align-items: center;
@@ -64,7 +69,6 @@ body{
   }
   nav ul li::after {
     content: "";
-    background: #76d4ff;
     color: #fff;
     width: 100%;
     height: 100%;
@@ -84,6 +88,10 @@ body{
     top: 50%;
     opacity: 1;
   }
+
+
+  /****************Footer****************/*
+
   footer{
     display: flex;
     background-color: rgb(255, 255, 255);
@@ -94,9 +102,20 @@ body{
     color: rgb(0, 0, 0);
     padding: 2em;
   }
+
+
+  /*******************Contenu Page*****************/
+
   .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
   .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-
+  h2{
+    text-align: center;
+    margin: 1.5em;
+  }
+  h1, p{
+    text-align: center;
+  }
+  /*****************Tableau*****************/
   table {
   border-collapse: collapse;
   border: 2px solid rgb(140 140 140);
@@ -120,8 +139,13 @@ body{
 
   tbody > tr:nth-of-type(even) {
   background-color: rgb(237 238 242);
+  } 
+  .motcle{
+    display: flex;
+    justify-content: center;
   }
 
+  /*****************Lien*****************/
   .link {
   outline: none;
   text-decoration: none;
@@ -150,21 +174,5 @@ body{
   background: #001878;
   color:  #21b2ff ;
   }
-  nav a, nav a:link, nav a:visited, nav a:focus, nav a:hover, nav a:active{
-    outline: none;
-    text-decoration: none;
-    padding: 2px 1px 0;
-    color : #000;
-    }
-    nav a:hover{
-        color: #001878;
-    }
   
-  .motcle{
-      display: flex;
-      justify-content: center;
-  }
-  h2{
-    text-align: center;
-    margin: 1.5em;
-  }
+ 

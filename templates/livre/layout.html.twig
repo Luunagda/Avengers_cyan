@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link href="{{asset("css/livre.css")}}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}Livre{% endblock %}
+{% block content %}
+<h1>Marque Page</h1>
+<p>Ici vous trouverez un tableau de livres que j'ai lu (pour une fois que j'en fini) !</p>
+{% block content_detail %}{% endblock %}
+
+{% endblock %}

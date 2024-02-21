@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link href="{{asset("css/cailloux.css")}}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}Le Cailloux{% endblock %}
+{% block content %}
+<h1>Le Cailloux</h1>
+<p>Ici vous trouverez un tableau de de la faune ou de la flore de notre cher Cailloux.</p>
+<div class="container">
+    <nav>
+        <ul>
+            <li> <a href="{{ path('le_cailloux_faune') }}">Faune</a></li>
+            <li> 
+                <a href="{{ path('le_cailloux_flore') }}">Flore</a>
+                {# Pour le menu déroulant, à faire <ul class="hidden">
+                    <li><a href="#">Faune</a></li>
+                    <li><a href="#">Flore</a></li>
+                </ul>#}
+            </li>
+        </ul>
+    </nav>
+</div>
+{% block content_detail %}{% endblock %}
+
+{% endblock %}

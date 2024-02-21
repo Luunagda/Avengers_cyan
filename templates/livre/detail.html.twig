@@ -1,10 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'livre/layout.html.twig' %}
 
-{% block title %}Livre{% endblock %}
-
-{% block content %}
-
-<div class="example-wrapper">
+{% block content_detail %}
     <h2>Detail du Livre avec l'id : {{livre.id}}</h2>
     <a class="link" href="{{ path('livre_index') }}">⬅️Retour arrière</a>
     <table>
@@ -39,5 +35,4 @@
             </tr>
       </tbody>
     </table>
-</div>
 {% endblock %}

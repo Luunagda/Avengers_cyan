@@ -1,13 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'livre/layout.html.twig' %}
 
-{% block title %}Livre{% endblock %}
-{% block stylesheets %}
-<link href="{{asset("css/index.css")}}" rel="stylesheet"/>
-{% endblock %}
-{% block content %}
-
-<div class="example-wrapper">
-    
+{% block content_detail %}
     <h2>Liste complète des Livres</h2>
     <table>
         <thead>
@@ -24,7 +17,7 @@
                 <tr>
                     <td>{{book.id}}</td>
                     <td><a class="link" href="{{ path('livre_detail', { 'id': book.id }) }}">{{book.titre}}</a></td>
-                    <td>{{book.annee}}</td>
+                   <td>{{book.annee}}</td>
                     <td>{{book.nbPages}}</td>
                     <td>
                         {{book.auteur.prenom}} {{book.auteur.nom}}
@@ -34,5 +27,4 @@
             {% endfor %}
         </tbody>
     </table>
-</div>
 {% endblock %}

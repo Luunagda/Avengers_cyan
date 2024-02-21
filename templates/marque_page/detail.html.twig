@@ -1,10 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'marque_page/layout.html.twig' %}
 
-{% block title %}Hello MarquePageController!{% endblock %}
-
-{% block content %}
-
-<div class="example-wrapper">
+{% block content_detail %}
     <h2>Detail du Marque page avec l'id : {{marque_page.id}}</h2>
     <a class="link" href="{{ path('marque_page_index') }}">⬅️Retour arrière</a>
     <table>
@@ -41,5 +37,4 @@
             </tr>
       </tbody>
     </table>
-</div>
 {% endblock %}

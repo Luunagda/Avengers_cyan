@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link href="{{asset("css/marque_page.css")}}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}Marque Page{% endblock %}
+{% block content %}
+<h1>Marque Page</h1>
+<p>Ici vous trouverez un tableau de marque pages (lien pas ceux pour les livres)</p>
+{% block content_detail %}{% endblock %}
+{% endblock %}
