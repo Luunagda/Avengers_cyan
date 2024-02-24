@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Livre;
 use App\Entity\Auteur;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 #[Route("/livre", requirements: ["_locale" => "en|es|fr"], name: "livre_")]
 class LivreController extends AbstractController
@@ -54,6 +55,40 @@ class LivreController extends AbstractController
         }
         return $this->render('livre/detail.html.twig', [
             'livre' => $livre,
+        ]);
+    }
+
+    
+    #[Route("/recherche/lettre-debut/{lettre}", name:"lettre")]
+    public function lettre($lettre, EntityManagerInterface $entityManager)
+    {
+        $listeLivres = $entityManager
+        ->getRepository(Livre::class)
+        ->findAllCommencePar($lettre);
+        return $this->render('livre/index.html.twig', [
+            'livre' => $listeLivres,
+        ]);
+    }
+
+    #[Route("/recherche/auteur/{nbLivre}", name:"nb_livre_auteur")]
+    public function auteurPlusieursLivre($nbLivre, EntityManagerInterface $entityManager)
+    {
+        $listeLivres = $entityManager
+        ->getRepository(Livre::class)
+        ->findAuteurPlusieursLivre($nbLivre);
+        return $this->render('livre/auteur.html.twig', [
+            'livre' => $listeLivres,
+        ]);
+    }
+
+    #[Route("/recherche/nb-livre", name:"nb_livre")]
+    public function nbLivre(EntityManagerInterface $entityManager)
+    {
+        $count = $entityManager
+        ->getRepository(Livre::class)
+        ->findAllCountLivre();
+        return $this->render('livre/count.html.twig', [
+            'count' => $count,
         ]);
     }
 }

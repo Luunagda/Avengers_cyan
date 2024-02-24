@@ -1,0 +1,24 @@
+{% extends 'livre/layout.html.twig' %}
+
+{% block content_detail %}
+    <h2>Liste complète des Livres</h2>
+    <table>
+        <thead>
+            <tr>
+                
+                <th scope="col">Auteur</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in livre %}
+                <tr>
+                    
+                    <td>
+                        {{book.auteur.prenom}} {{book.auteur.nom}}
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

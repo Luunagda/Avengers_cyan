@@ -45,4 +45,43 @@ class LivreRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    //Commence par la lettre passée en paramètre
+    /** @return Livre[] */
+    public function findAllCommencePar($lettre): array
+    {
+        $qb = $this->createQueryBuilder('l')
+            ->andWhere('l.titre LIKE :letter')
+            ->setParameter('letter',$lettre.'%');
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
+    //Les auteurs ayant écrit plus d'un certain nombre de livres 
+    //Pas sûre qu'il fonctionne correctement
+    /**
+     * @param int $nbLivre
+     * @return Livre[]
+     */
+    public function findAuteurPlusieursLivre($nbLivre): array
+    {
+        $qb = $this->createQueryBuilder('l')
+            ->groupBy('l.auteur')
+            ->having('COUNT(l.id) > :nbLivre')
+            ->setParameter('nbLivre', $nbLivre);
+
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
+    //Compte le nombre de livre présent en base
+    /** @return Livre[] */
+    public function findAllCountLivre(): array
+    {
+        $qb = $this->createQueryBuilder('l')
+            ->select('COUNT(l.id)');
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
 }
