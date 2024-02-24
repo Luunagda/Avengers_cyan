@@ -23,25 +23,25 @@ class LivreController extends AbstractController
         ]);
     }
     
-    #[Route("/ajouter", name: "ajouter")]
-    public function ajouterLivre(EntityManagerInterface $entityManager): Response
-    {
-        $auteur = new Auteur();
-        $auteur->setPrenom("V.E.");
-        $auteur->setNom("Schwab");
+    // #[Route("/ajouter", name: "ajouter")]
+    // public function ajouterLivre(EntityManagerInterface $entityManager): Response
+    // {
+    //     $auteur = new Auteur();
+    //     $auteur->setPrenom("V.E.");
+    //     $auteur->setNom("Schwab");
         
-        $livre = new Livre();
-        $livre->setTitre("Vicious");
-        $livre->setAnnee(2019);
-        $livre->setNbPages(532);
-        $livre->setAuteur($auteur);
+    //     $livre = new Livre();
+    //     $livre->setTitre("Vicious");
+    //     $livre->setAnnee(2019);
+    //     $livre->setNbPages(532);
+    //     $livre->setAuteur($auteur);
 
-        $entityManager->persist($auteur);
-        $entityManager->persist($livre);
-        $entityManager->flush();
+    //     $entityManager->persist($auteur);
+    //     $entityManager->persist($livre);
+    //     $entityManager->flush();
 
-        return new Response("Livre sauvegardé avec l'id ". $livre->getId());
-    }
+    //     return new Response("Livre sauvegardé avec l'id ". $livre->getId());
+    // }
 
     #[Route("/detail/{id<\d+>}", name: "detail")]
     public function afficherLivre(int $id, EntityManagerInterface $entityManager):Response
