@@ -10,13 +10,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for book in livre %}
+            {% for a in auteur %}
                 <tr>
-                    
                     <td>
-                        {{book.auteur.prenom}} {{book.auteur.nom}}
+                        {{a[0].prenom}} {{a[0].nom}}
                     </td>
-
                 </tr>
             {% endfor %}
         </tbody>

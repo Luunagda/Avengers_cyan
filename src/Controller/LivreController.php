@@ -64,7 +64,7 @@ class LivreController extends AbstractController
     {
         $listeLivres = $entityManager
         ->getRepository(Livre::class)
-        ->findAllCommencePar($lettre);
+        ->getStartBy($lettre);
         return $this->render('livre/index.html.twig', [
             'livre' => $listeLivres,
         ]);
@@ -75,20 +75,20 @@ class LivreController extends AbstractController
     {
         $listeLivres = $entityManager
         ->getRepository(Livre::class)
-        ->findAuteurPlusieursLivre($nbLivre);
+        ->FindAuteurByNbLivre($nbLivre);
         return $this->render('livre/auteur.html.twig', [
-            'livre' => $listeLivres,
+            'auteur' => $listeLivres,
         ]);
     }
 
     #[Route("/recherche/nb-livre", name:"nb_livre")]
     public function nbLivre(EntityManagerInterface $entityManager)
     {
-        $count = $entityManager
+        $nbLivre = $entityManager
         ->getRepository(Livre::class)
-        ->findAllCountLivre();
+        ->getNbLivres();
         return $this->render('livre/count.html.twig', [
-            'count' => $count,
+            'nbLivre' => $nbLivre,
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Livre;
+use App\Entity\Auteur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -46,42 +47,84 @@ class LivreRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-    //Commence par la lettre passée en paramètre
-    /** @return Livre[] */
-    public function findAllCommencePar($lettre): array
+    // //Commence par la lettre passée en paramètre
+    // /** @return Livre[] */
+    // public function findAllCommencePar($lettre): array
+    // {
+    //     $qb = $this->createQueryBuilder('l')
+    //         ->andWhere('l.titre LIKE :letter')
+    //         ->setParameter('letter',$lettre.'%');
+    //     $query = $qb->getQuery();
+    //     return $query->execute();
+    // }
+
+    public function getNbLivres()
     {
-        $qb = $this->createQueryBuilder('l')
-            ->andWhere('l.titre LIKE :letter')
-            ->setParameter('letter',$lettre.'%');
-        $query = $qb->getQuery();
-        return $query->execute();
+        $entityManager = $this->getEntityManager();
+
+        $qry = $entityManager->createQuery(
+            "select count(l) as nb
+            from App\Entity\Livre l"
+        );
+
+        return $qry->getResult()[0]["nb"];
     }
+
 
     //Les auteurs ayant écrit plus d'un certain nombre de livres 
     //Pas sûre qu'il fonctionne correctement
-    /**
-     * @param int $nbLivre
-     * @return Livre[]
-     */
-    public function findAuteurPlusieursLivre($nbLivre): array
-    {
-        $qb = $this->createQueryBuilder('l')
-            ->groupBy('l.auteur')
-            ->having('COUNT(l.id) > :nbLivre')
-            ->setParameter('nbLivre', $nbLivre);
+    // /**
+    //  * @param int $nbLivre
+    //  * @return Livre[]
+    //  */
+    // public function findAuteurPlusieursLivre($nbLivre): array
+    // {
+    //     $qb = $this->createQueryBuilder('l')
+    //         ->groupBy('l.auteur')
+    //         ->having('COUNT(l.id) > :nbLivre')
+    //         ->setParameter('nbLivre', $nbLivre);
 
-        $query = $qb->getQuery();
-        return $query->execute();
+    //     $query = $qb->getQuery();
+    //     return $query->execute();
+    // }
+
+
+    public function FindAuteurByNbLivre($nbLivre): array
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+                'SELECT a, count(l) AS NbLivres
+                FROM App\Entity\Auteur a 
+                JOIN a.auteur l 
+                GROUP BY a.id
+                HAVING NbLivres > :nbLivre'
+            )->setParameter('nbLivre', $nbLivre);
+        return $query->getResult();
     }
 
-    //Compte le nombre de livre présent en base
-    /** @return Livre[] */
-    public function findAllCountLivre(): array
+    // //Compte le nombre de livre présent en base
+    // /** @return Livre[] */
+    // public function findAllCountLivre(): array
+    // {
+    //     $qb = $this->createQueryBuilder('l')
+    //         ->select('COUNT(l.id)');
+    //     $query = $qb->getQuery();
+    //     return $query->execute();
+    // }
+
+    public function getStartBy(string $lettre): array
     {
-        $qb = $this->createQueryBuilder('l')
-            ->select('COUNT(l.id)');
-        $query = $qb->getQuery();
-        return $query->execute();
-    }
+        $entityManager = $this->getEntityManager();
+
+        $qry = $entityManager->createQuery(
+            "select l
+            from App\Entity\Livre l
+            where l.titre like :lettre
+            order by l.titre"
+        )->setParameter("lettre", $lettre."%");
+
+        return $qry->getResult();
+    } 
+
 
 }
