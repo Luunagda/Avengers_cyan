@@ -19,7 +19,7 @@ class Cailloux
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 4000)]
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'category')]

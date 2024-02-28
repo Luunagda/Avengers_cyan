@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Livre;
 use App\Entity\Auteur;
+use Symfony\Component\HttpFoundation\Request;
 
 class LivreFixture extends Fixture
 {

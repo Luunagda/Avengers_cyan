@@ -19,10 +19,11 @@
                     <td><a class="link" href="{{ path('livre_detail', { 'id': book.id }) }}">{{book.titre}}</a></td>
                    <td>{{book.annee}}</td>
                     <td>{{book.nbPages}}</td>
+                    {% if book.auteur %}
                     <td>
                         {{book.auteur.prenom}} {{book.auteur.nom}}
                     </td>
-
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>

@@ -23,7 +23,7 @@ class Livre
     private ?int $nb_pages = null;
 
     #[ORM\ManyToOne(inversedBy: 'auteur')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Auteur $auteur = null;
 
     public function getId(): ?int
