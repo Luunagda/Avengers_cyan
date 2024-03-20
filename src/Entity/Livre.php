@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\LivreRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: LivreRepository::class)]
 class Livre
@@ -24,6 +26,8 @@ class Livre
 
     #[ORM\ManyToOne(inversedBy: 'auteur')]
     #[ORM\JoinColumn(nullable: true)]
+    #[Assert\Type(type:"App\Entity\Auteur")]
+    #[Assert\Valid]
     private ?Auteur $auteur = null;
 
     public function getId(): ?int

@@ -124,7 +124,7 @@ class LivreController extends AbstractController
         ]);
     }
     
-    #[Route("/auteur/ajout", name:"ajout")]
+    #[Route("/auteur/ajout", name:"ajout_auteur")]
     public function ajoutAuteur(Request $request, entityManagerInterface $entityManager)
     {
         $auteur = new Auteur();

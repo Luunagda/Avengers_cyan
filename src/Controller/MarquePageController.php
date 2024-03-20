@@ -24,30 +24,30 @@ class MarquePageController extends AbstractController
         ]);
     }
 
-    #[Route("/ajouter", name: "ajouter")]
-    public function ajouterMarquePage(EntityManagerInterface $entityManager): Response
-    {
-        $mots_cles = new MotsCles();
-        $mots_cles->setMotsCles("framework");
+    // #[Route("/ajouter", name: "ajouter")]
+    // public function ajouterMarquePage(EntityManagerInterface $entityManager): Response
+    // {
+    //     $mots_cles = new MotsCles();
+    //     $mots_cles->setMotsCles("framework");
 
-        $mots_cles2 = new MotsCles();
-        $mots_cles2->setMotsCles("php");
+    //     $mots_cles2 = new MotsCles();
+    //     $mots_cles2->setMotsCles("php");
         
-        $marques_pages = new MarquePage();
-        $marques_pages->setUrl("https://www.symfony.com/");
-        $marques_pages->setDateCreation(new \DateTime());
-        $marques_pages->setCommentaire("C'est un framework PHP très puissant et très pratique");
-        $marques_pages->addMotsCle($mots_cles);
-        $marques_pages->addMotsCle($mots_cles2);
+    //     $marques_pages = new MarquePage();
+    //     $marques_pages->setUrl("https://www.symfony.com/");
+    //     $marques_pages->setDateCreation(new \DateTime());
+    //     $marques_pages->setCommentaire("C'est un framework PHP très puissant et très pratique");
+    //     $marques_pages->addMotsCle($mots_cles);
+    //     $marques_pages->addMotsCle($mots_cles2);
 
 
-        $entityManager->persist($mots_cles);
-        $entityManager->persist($mots_cles2);
-        $entityManager->persist($marques_pages);
-        $entityManager->flush();
+    //     $entityManager->persist($mots_cles);
+    //     $entityManager->persist($mots_cles2);
+    //     $entityManager->persist($marques_pages);
+    //     $entityManager->flush();
 
-        return new Response("MarquePage sauvegardé avec l'id ". $marques_pages->getId());
-    }
+    //     return new Response("MarquePage sauvegardé avec l'id ". $marques_pages->getId());
+    // }
 
     #[Route("/detail/{id<\d+>}", name: "detail")]
     public function afficherMarquePage(int $id, EntityManagerInterface $entityManager):Response

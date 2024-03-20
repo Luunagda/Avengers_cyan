@@ -1,0 +1,29 @@
+{% extends 'employe/layout.html.twig' %}
+
+{% block content_detail %}
+    <h2>Liste complète des Employés</h2>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Adresse</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employe in employes %}
+                <tr>
+                    <td>{{employe.id}}</td>
+                    <td><a class="link" href="{{ path('employe_detail', { 'id': employe.id }) }}">{{employe.prenom}} </a></td>
+                    <td><a class="link" href="{{ path('employe_detail', { 'id': employe.id }) }}">{{employe.nom}}</a></td>
+                    {% if employe.adresse %}
+                    <td>
+                        {{employe.adresse.rue}}, {{employe.adresse.ville}}, {{employe.adresse.pays}}, {{employe.adresse.codePostal}}
+                    </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

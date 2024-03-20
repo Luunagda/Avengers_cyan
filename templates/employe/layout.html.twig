@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link href="{{asset("css/livre.css")}}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}Employés{% endblock %}
+{% block content %}
+<h1>Employés</h1>
+<p>Ici vous trouverez un tableau des employés d'une entreprise fictive (elle existe pas et a pour PNJ un gars sorti de nulle part qui s'incruste en plein cours...).</p>
+{% block content_detail %}{% endblock %}
+
+{% endblock %}
