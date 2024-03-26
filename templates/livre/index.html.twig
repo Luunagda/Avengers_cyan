@@ -2,6 +2,7 @@
 
 {% block content_detail %}
     <h2>Liste complète des Livres</h2>
+    <a class="link" href="{{ path('livre_ajout') }}">Ajouter un livre</a>
     <table>
         <thead>
             <tr>
@@ -10,6 +11,7 @@
                 <th scope="col">Année</th>
                 <th scope="col">Nombre de pages</th>
                 <th scope="col">Auteur</th>
+                <th scope="col">Modifier</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +26,7 @@
                         {{book.auteur.prenom}} {{book.auteur.nom}}
                     </td>
                     {% endif %}
+                    <td><a class="link" href="{{ path('livre_modifier_livre', { 'id': book.id }) }}">Modifier</a></td>
                 </tr>
             {% endfor %}
         </tbody>

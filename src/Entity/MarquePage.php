@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as assert;
 
 #[ORM\Entity(repositoryClass: MarquePageRepository::class)]
 class MarquePage
@@ -27,6 +28,8 @@ class MarquePage
 
 
     #[ORM\ManyToMany(targetEntity: MotsCles::class, mappedBy: 'lien')]
+    //#[assert\Type(type:"App\Entity\MotsCles")]
+    #[assert\Valid]
     private Collection $motsCles;
 
     public function __construct()
@@ -102,5 +105,15 @@ class MarquePage
     public function getMotsCles(): Collection
     {
         return $this->motsCles;
+    }
+
+    public function __toString(): string
+    {
+        $res =  $this->url ." - ";
+        foreach ($this->getMotsCles() as $mc) {
+            $res .= $mc ." ";
+        }
+
+        return $res;
     }
 }

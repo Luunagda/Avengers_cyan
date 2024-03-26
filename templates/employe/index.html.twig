@@ -2,6 +2,7 @@
 
 {% block content_detail %}
     <h2>Liste complète des Employés</h2>
+    <a class="link" href="{{ path('employe_ajout') }}">Ajouter un employé</a>
     <table>
         <thead>
             <tr>
@@ -9,6 +10,7 @@
                 <th scope="col">Prénom</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Adresse</th>
+                <th scope="col">Modifier</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +24,7 @@
                         {{employe.adresse.rue}}, {{employe.adresse.ville}}, {{employe.adresse.pays}}, {{employe.adresse.codePostal}}
                     </td>
                     {% endif %}
+                    <td><a class="link" href="{{ path('employe_modifier', { 'id': employe.id }) }}">Modifier</a></td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -2,6 +2,7 @@
 
 {% block content_detail %}    
     <h2>Liste complète des marques-pages</h2>
+    <a class="link" href="{{ path('marque_page_ajout') }}">Ajouter un marque-page</a>
     <table>
         <thead>
             <tr>
@@ -10,6 +11,7 @@
                 <th scope="col">Date</th>
                 <th scope="col">Commentaire</th>
                 <th scope="col">Mots-clés</th>
+                <th scope="col">Modifier</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +26,7 @@
                             {{mc.motsCles}}
                         {% endfor %}
                     </td>
-
+                    <td><a class="link" href="{{ path('marque_page_modifier', { 'id': page.id }) }}">Modifier</a></td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -1,5 +1,6 @@
 {% extends 'livre/layout.html.twig' %}
 
 {% block content_detail %}
+    <a class="link" href="{{ path('livre_index') }}">⬅️Retour arrière</a>
     {{ form(form) }}
 {% endblock %}

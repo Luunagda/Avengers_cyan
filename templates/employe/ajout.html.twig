@@ -1,5 +1,6 @@
 {% extends 'employe/layout.html.twig' %}
 
 {% block content_detail %}
+    <a class="link" href="{{ path('employe_index') }}">⬅️Retour arrière</a>
     {{ form(form) }}
 {% endblock %}
